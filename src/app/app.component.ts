@@ -34,6 +34,7 @@ export class AppComponent {
           // TODO: create a Satellite object using new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
           // TODO: add the new Satellite object to sourceList using: this.sourceList.push(satellite);
           this.displayList = this.sourceList.slice(0);
+          
       
        }.bind(this));
     }.bind(this));
@@ -45,7 +46,8 @@ export class AppComponent {
   searchTerm = searchTerm.toLowerCase();
   for(let i=0; i < this.sourceList.length; i++) {
      let name = this.sourceList[i].name.toLowerCase();
-     if (name.indexOf(searchTerm) >= 0) {
+     let type = this.sourceList[i].type.toLowerCase();
+     if (name.indexOf(searchTerm) >= 0 || type.indexOf(searchTerm) >= 0) {
         matchingSatellites.push(this.sourceList[i]);
      }
   }
@@ -53,5 +55,10 @@ export class AppComponent {
   // this will cause Angular to re-make the table, but now only containing matches
   this.displayList = matchingSatellites;
 }
+
+
+
+
+
  
 }
